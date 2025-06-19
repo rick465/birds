@@ -1,0 +1,53 @@
+<!-- bulbul.component.html -->
+<div class="flex flex-col xl:flex-row h-screen font-sans">
+  <!-- 桌面版選單 -->
+  @if (screenWidth >= 1280) {
+    <app-side-menu-desktop
+      [selectedIndex]="selectedIndex"
+      (selectedIndexChange)="selectMenu($event)"
+      [@menuAnimation]>
+    </app-side-menu-desktop>
+  }
+
+  <!-- 手機版選單 -->
+  @if (screenWidth < 1280) {
+    <app-side-menu-mobile
+      [selectedIndex]="selectedIndex"
+      (selectedIndexChange)="selectMenu($event)"
+      [@menuAnimation]>
+    </app-side-menu-mobile>
+  }
+
+  <div class="flex-1 flex flex-col">
+    <!-- 圖片區塊 -->
+    <section class="w-full h-[300px] xs:h-[300px] sm:h-[500px] md:h-[740px] lg:h-[740px] xl:h-[840px] 2xl:h-[940px] relative flex flex-col justify-end overflow-hidden"
+             [@imageAnimation]>
+      <img src="assets/img/home/bulbul.png" alt="白頭翁"
+           class="absolute inset-0 w-full h-full object-cover [object-position:40%_center] z-0" />
+      <div class="relative z-10 flex justify-end items-end w-full h-full px-4 sm:px-6 md:p-12">
+        <div class="text-white drop-shadow text-right flex flex-col items-end">
+          <h1 class="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold mb-2">白頭翁 (Chinese bulbul)</h1>
+          <p class="text-sm sm:text-base md:text-lg lg:text-xl">
+            又名白頭鵯，以果實、昆蟲為主食，無法消化小米，平均壽命約8-10年。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 說明區塊 -->
+    <section class="flex flex-col md:flex-row bg-[#e9dbce] px-4 sm:px-6 md:px-12 py-6 sm:py-10 md:py-12 gap-6 md:gap-16 flex-1"
+             [@explainAnimation]="screenWidth >= 768"
+             [@explainAnimationMobile]="screenWidth < 768">
+      @for (item of explainList; track item.desc) {
+        <div class="w-full md:basis-1/3 max-w-full md:max-w-[420px] flex flex-row items-start px-2 sm:px-4 md:px-6 mb-6 md:mb-0 explain-item">
+          <div class="flex flex-col items-end mr-2 sm:mr-4 md:mr-6 min-w-[3rem]">
+            <span class="text-2xl sm:text-3xl md:text-4xl font-extrabold [writing-mode:vertical-rl] mt-3 md:mt-6">{{ item.title }}</span>
+            <img src="assets/img/icon/red_icon.png"
+                 class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mt-[-4px] mr-[-4px] md:mt-[-6px] md:mr-[-6px]" alt="icon" />
+          </div>
+          <p class="text-base sm:text-base md:text-[18px] leading-[1.5] md:leading-[1.8] flex-1 p-2 sm:p-4 md:p-6">{{ item.desc }}</p>
+        </div>
+      }
+    </section>
+  </div>
+</div>

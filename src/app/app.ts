@@ -1,12 +1,3 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AppShell } from './tailwindtest/app-shell/app-shell';
 
-@Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
-})
-export class App {
-  protected title = 'tailwindtest';
-}
+export const AppComponent = AppShell;

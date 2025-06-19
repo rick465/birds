@@ -1,0 +1,48 @@
+<div class="w-full">
+  <!-- 手機版頂部選單 -->
+  <div class="flex w-full items-center justify-around gap-16 px-4 py-4 bg-white shadow">
+    <button (click)="menuOpen = !menuOpen">
+      <img
+        [src]="menuOpen ? 'assets/img/icon/hamburgur_close_icon.png' : 'assets/img/icon/hamburgur_open_icon.png'"
+        class="w-6 h-6"
+        alt="menu"
+      />
+    </button>
+    <div class="font-bold text-xl">白頭翁不吃小米</div>
+    <div class="bulbul-logo-mobile">
+      <div class="bulbul-top-mobile"></div>
+      <div class="bulbul-bottom-mobile"></div>
+      <div class="bulbul-eye-mobile"></div>
+      <div class="bulbul-beak-mobile"></div>
+    </div>
+  </div>
+
+  <!-- 手機版下拉選單 -->
+  <div [@menuExpandAnimation]="menuOpen ? 'open' : 'closed'" class="overflow-hidden">
+    <ul class="flex flex-col w-full bg-white shadow px-4">
+      @for (item of menuList; let idx = $index; track item.text) {
+        <li
+          class="py-2 px-4 text-base text-center cursor-pointer"
+          [class.text-[#a36c6c]]="selectedIndex === idx"
+          [class.font-semibold]="selectedIndex === idx"
+          [class.text-black]="selectedIndex !== idx"
+          [class.font-normal]="selectedIndex !== idx"
+          (click)="selectMenu(idx)"
+          (mouseenter)="hoveredIndex = idx"
+          (mouseleave)="hoveredIndex = -1"
+          [@menuItemHover]="selectedIndex === idx ? 'normal' : (hoveredIndex === idx ? 'hovered' : 'normal')"
+        >
+          <span
+            class="inline-block pb-0.5"
+            [class.border-b-2]="selectedIndex === idx"
+            [class.text-[#a36c6c]]="selectedIndex === idx"
+            [class.border-[#a36c6c]]="selectedIndex === idx"
+            [class.hover\:border-b-2]="selectedIndex !== idx"
+            [class.hover\:border-[#a36c6c]]="selectedIndex !== idx"
+            [class.transition-all]="selectedIndex !== idx"
+          >{{ item.text }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</div>

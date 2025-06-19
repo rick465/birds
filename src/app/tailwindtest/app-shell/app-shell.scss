@@ -1,0 +1,61 @@
+.bulbul-icon {
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px 0 #0002;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bulbul-icon .head {
+  position: absolute;
+  left: 24px;
+  top: 36px;
+  width: 72px;
+  height: 48px;
+  background: #fff;
+  border-radius: 60% 60% 60% 60% / 80% 80% 60% 60%;
+  border-bottom: 12px solid #222;
+  border-left: 12px solid #222;
+  border-top: 12px solid #222;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.bulbul-icon .eye {
+  position: absolute;
+  left: 68px;
+  top: 56px;
+  width: 18px;
+  height: 18px;
+  background: #222;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.bulbul-icon .beak {
+  position: absolute;
+  left: 98px;
+  top: 62px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 18px solid #222;
+  z-index: 2;
+}
+
+.bulbul-icon .brow {
+  position: absolute;
+  left: 38px;
+  top: 36px;
+  width: 56px;
+  height: 18px;
+  border-top: 8px solid #222;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 4;
+}
