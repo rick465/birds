@@ -20,29 +20,28 @@
   <!-- 手機版下拉選單 -->
   <div [@menuExpandAnimation]="menuOpen ? 'open' : 'closed'" class="overflow-hidden">
     <ul class="flex flex-col w-full bg-white shadow px-4">
-      @for (item of menuList; let idx = $index; track item.text) {
-        <li
-          class="py-2 px-4 text-base text-center cursor-pointer"
+      <li
+        *ngFor="let item of menuList; let idx = index; trackBy: trackByText"
+        class="py-2 px-4 text-base text-center cursor-pointer"
+        [class.text-[#a36c6c]]="selectedIndex === idx"
+        [class.font-semibold]="selectedIndex === idx"
+        [class.text-black]="selectedIndex !== idx"
+        [class.font-normal]="selectedIndex !== idx"
+        (click)="selectMenu(idx)"
+        (mouseenter)="hoveredIndex = idx"
+        (mouseleave)="hoveredIndex = -1"
+        [@menuItemHover]="selectedIndex === idx ? 'normal' : (hoveredIndex === idx ? 'hovered' : 'normal')"
+      >
+        <span
+          class="inline-block pb-0.5"
+          [class.border-b-2]="selectedIndex === idx"
           [class.text-[#a36c6c]]="selectedIndex === idx"
-          [class.font-semibold]="selectedIndex === idx"
-          [class.text-black]="selectedIndex !== idx"
-          [class.font-normal]="selectedIndex !== idx"
-          (click)="selectMenu(idx)"
-          (mouseenter)="hoveredIndex = idx"
-          (mouseleave)="hoveredIndex = -1"
-          [@menuItemHover]="selectedIndex === idx ? 'normal' : (hoveredIndex === idx ? 'hovered' : 'normal')"
-        >
-          <span
-            class="inline-block pb-0.5"
-            [class.border-b-2]="selectedIndex === idx"
-            [class.text-[#a36c6c]]="selectedIndex === idx"
-            [class.border-[#a36c6c]]="selectedIndex === idx"
-            [class.hover\:border-b-2]="selectedIndex !== idx"
-            [class.hover\:border-[#a36c6c]]="selectedIndex !== idx"
-            [class.transition-all]="selectedIndex !== idx"
-          >{{ item.text }}</span>
-        </li>
-      }
+          [class.border-[#a36c6c]]="selectedIndex === idx"
+          [class.hover\:border-b-2]="selectedIndex !== idx"
+          [class.hover\:border-[#a36c6c]]="selectedIndex !== idx"
+          [class.transition-all]="selectedIndex !== idx"
+        >{{ item.text }}</span>
+      </li>
     </ul>
   </div>
 </div>

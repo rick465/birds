@@ -3,10 +3,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 
 @Component({
   selector: 'app-side-menu-desktop',
-  standalone: true,
-  imports: [],
   templateUrl: './side-menu-desktop.html',
-  styleUrl: './side-menu-desktop.css',
+  styleUrls: ['./side-menu-desktop.css'],
   animations: [
     // 選單項目hover動畫
     trigger('menuItemHover', [
@@ -40,5 +38,9 @@ export class SideMenuDesktopComponent {
   selectMenu(idx: number) {
     this.selectedIndex = idx
     this.selectedIndexChange.emit(idx)
+  }
+
+  trackByText(index: number, item: { text: string }): string {
+    return item.text;
   }
 }

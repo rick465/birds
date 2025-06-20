@@ -5,8 +5,6 @@ import { trigger, state, style, transition, animate, query, stagger } from '@ang
 
 @Component({
   selector: 'app-shell',
-  standalone: true,
-  imports: [SideMenuDesktopComponent, SideMenuMobileComponent],
   templateUrl: './app-shell.html',
   styleUrls: ['./app-shell.scss'],
   animations: [
@@ -83,5 +81,9 @@ export class AppShell {
   @HostListener('window:resize')
   onResize() {
     this.screenWidth = window.innerWidth;
+  }
+
+  trackByDesc(index: number, item: { desc: string }): string {
+    return item.desc;
   }
 }

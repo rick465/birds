@@ -1,9 +1,8 @@
-import { AppComponent } from './app/app';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch((err: any) => console.error(err));
 
 const savedTheme = localStorage.getItem('theme');
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;

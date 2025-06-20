@@ -3,10 +3,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 
 @Component({
   selector: 'app-side-menu-mobile',
-  standalone: true,
-  imports: [],
   templateUrl: './side-menu-mobile.html',
-  styleUrl: './side-menu-mobile.css',
+  styleUrls: ['./side-menu-mobile.css'],
   animations: [
     // 手機版選單展開動畫
     trigger('menuExpandAnimation', [
@@ -57,5 +55,9 @@ export class SideMenuMobileComponent {
     this.selectedIndex = idx
     this.selectedIndexChange.emit(idx)
     this.menuOpen = false
+  }
+
+  trackByText(index: number, item: { text: string }): string {
+    return item.text;
   }
 }
