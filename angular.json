@@ -61,7 +61,10 @@
               "browserTarget": "tailwindtest:build:production"
             },
             "development": {
-              "browserTarget": "tailwindtest:build:development"
+              "browserTarget": "tailwindtest:build:development",
+              "allowedHosts": [
+                ".csb.app"
+              ]
             }
           },
           "defaultConfiguration": "development"
